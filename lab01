@@ -1,0 +1,41 @@
+#include <fstream>
+#include <iostream>
+using namespace std;
+const int CAPACITY = 100;
+int linear_search(int a[], int size, int key);
+int main()
+{
+int list[CAPACITY] = {};
+int number = 0, size = 0, i = 0, k = 0, index = 0;
+ifstream input("search.txt");
+while (input >> number)
+{
+list[i] = number;
+i++;
+}
+input.close();
+size = i;
+cout << "The array: ";
+for (int i = 0; i<size; i++)
+cout << list[i] <<" ";
+cout << endl;
+cout << "Enter the key: ";
+cin >> k;
+index = linear_search(list, size, k);
+if (index >= 0)
+cout << "The Index is " << index << endl;
+else
+cout << k << " is not in array." << endl;
+return 0;
+}
+int linear_search(int a[], int size, int key)
+{
+int i = 0;
+while (i < size)
+{
+if (a[i] == key)
+return i;
+i++;
+}
+return -1;
+}
